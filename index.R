@@ -1,5 +1,5 @@
 getwd()
-setwd("C:/Users/Samuel Willian/Documents/www/Mestrado/Metaheurísticas/Projeto final")
+setwd("C:/Users/Samuel Willian/Documents/mestrado/Metaheuristicas/ProjetoFinal_metaheuristicas")
 
 library(kohonen)
 require(kohonen)
@@ -274,19 +274,9 @@ sum(warehouse_costs[unique(matching$j)])
 ###########################    Aplicação do TCP ################################
 ################################################################################
 
-labels <- c("city 1", 
-            "city 2",
-            "city 3",
-            "city 4",
-            "city 5",
-            "city 6",
-            "city 7",
-            "city 8",
-            "city 9",
-            "city 10",
-            "city 11",
-            "city 12",
-            "warehouse")
+
+
+
 target_warehouse <- 1
 filtered_customers <- filter(customer_locations, localiz == target_warehouse)
 filtered_customers <- filtered_customers[, c(2:3)]
@@ -314,6 +304,15 @@ distFact <- function(warehouse){
   
   return(result_matrix)
 }
+
+
+filtered_length <- nrow(filtered_customers)-1
+labels <- c()
+for(number in 1:filtered_length){
+  labels <- append(labels, paste("city", number))
+}
+labels <- append(labels, "warehouse")
+
 all_dist_matrix <- as.data.frame(distFact())
 colnames(all_dist_matrix) <- labels
 rownames(all_dist_matrix) <- labels
