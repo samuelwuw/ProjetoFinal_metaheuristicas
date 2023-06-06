@@ -330,16 +330,16 @@ tourLength <- function(tour, distMatrix) {
 tspFitness <- function(tour, ...) 1/tourLength(tour, ...)
 
 GA <- ga(type = "permutation", fitness = tspFitness, distMatrix = all_dist_matrix,
-         lower = 1, upper = nrow(filtered_customers), popSize = 50, 
-         maxiter = 5000, run = 500, pmutation = 0.2)
+         lower = 1, upper = nrow(filtered_customers), popSize = 70, 
+         maxiter = 10000, run = 1000, pmutation = 0.2)
 summary(GA)
 
 
 
-GA2 <- ga(type = "permutation", fitness = tspFitness, distMatrix = all_dist_matrix,
-          lower = 1, upper = nrow(filtered_customers), popSize = 50, maxiter = 5000,
-          run = 500, pmutation = 0.2)
-summary(GA2)
+#GA2 <- ga(type = "permutation", fitness = tspFitness, distMatrix = all_dist_matrix,
+#          lower = 1, upper = nrow(filtered_customers), popSize = 50, maxiter = 5000,
+#          run = 500, pmutation = 0.2)
+#summary(GA2)http://127.0.0.1:25293/graphics/plot_zoom_png?width=1270&height=861
 
 #Visualization 
 mds <- cmdscale(as.matrix(all_dist_matrix))
